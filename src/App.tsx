@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import VirtualList from "./VirtualList";
+
+const data = new Array(1000).fill(0).map((_, i) => i + 1);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className='App'>
+			<VirtualList
+				style={{
+					height: "300px",
+					border: "2px solid gray",
+					borderRadius: "10px",
+				}}
+				rowRender={(v) => <div>{v}</div>}
+				rowHeight={30}
+				data={data}
+			/>
+		</div>
+	);
 }
 
 export default App;
